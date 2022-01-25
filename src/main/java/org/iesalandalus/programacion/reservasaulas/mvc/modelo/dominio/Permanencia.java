@@ -17,15 +17,15 @@ public class Permanencia {
 		if(permanencia == null) {
 			throw new IllegalArgumentException("ERROR:CAMPO DIA VACIO");
 		}
-		this.dia = permanencia.getDia();
-		this.tramo = permanencia.getTramo();
+		setDia(permanencia.getDia());
+		setTramo(permanencia.getTramo());
 	}
 	
 	public LocalDate getDia() {
 		return dia;
 	}
 	
-	public void setDia(LocalDate dia) {
+	private void setDia(LocalDate dia) {
 		if(dia == null) {
 			throw new IllegalArgumentException("ERROR:CAMPO DIA VACIO");
 		}else {
@@ -37,7 +37,7 @@ public class Permanencia {
 		return tramo;
 	}
 	
-	public void setTramo(Tramo tramo) {
+	private void setTramo(Tramo tramo) {
 		if(tramo == null) {
 			throw new IllegalArgumentException("ERROR:CAMPO TRAMO VACIO");
 		}else {
