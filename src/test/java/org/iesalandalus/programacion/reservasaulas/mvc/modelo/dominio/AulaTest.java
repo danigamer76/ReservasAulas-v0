@@ -7,8 +7,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-public class AulaTest {
-/*	
+public class AulaTest {	
 	private static final String ERROR_EXCEPCION = "Debería haber saltado la excepción.";
 	private static final String ERROR_NO_EXCEPCION = "No debería haber saltado la excepción.";
 	private static final String NOMBRE = "Salón de actos";
@@ -102,5 +101,4 @@ public class AulaTest {
 		Aula aula = new Aula(NOMBRE);
 		assertEquals("[nombre=Salón de actos]", aula.toString());
 	}
-*/
 }

@@ -11,17 +11,21 @@ public class Aula {
 	
 	public Aula(Aula aula) {
 		if(aula == null) {
-			throw new IllegalArgumentException("ERROR:CAMPO AULA VACIO");
+			throw new IllegalArgumentException("No se puede copiar un aula nula.");
 		}else {
 			setNombre(aula.getNombre());
 		}
 	}
 
 	private void setNombre(String nombre) {
-		if(nombre == null || nombre == "") {
-			throw new IllegalArgumentException("ERROR:CAMPO NOMBRE VACIO");
+		if(nombre == null) {
+			throw new IllegalArgumentException("El nombre del aula no puede ser nulo.");
 		}else {
-			this.nombre = nombre;
+			if(nombre == "") {
+				throw new IllegalArgumentException("El nombre del aula no puede estar vacío.");
+			}else {
+				this.nombre = nombre;
+			}
 		}
 	}
 
@@ -48,7 +52,7 @@ public class Aula {
 
 	@Override
 	public String toString() {
-		return "Aula [NOMBRE=" + nombre + "]";
+		return "[nombre=" + nombre + "]";
 	}
 	
 	

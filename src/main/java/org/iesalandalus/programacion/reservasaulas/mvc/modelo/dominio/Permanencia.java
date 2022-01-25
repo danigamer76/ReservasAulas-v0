@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Permanencia {
 	private LocalDate dia;
 	private Tramo tramo;
-	private static final DateTimeFormatter FORMATO_DIA = DateTimeFormatter.ofPattern("d/MM/yyyy");
+	private static final DateTimeFormatter FORMATO_DIA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	public Permanencia(LocalDate dia,Tramo tramo) {
 		setDia(dia);
 		setTramo(tramo);
@@ -15,10 +15,11 @@ public class Permanencia {
 	
 	public Permanencia(Permanencia permanencia) {
 		if(permanencia == null) {
-			throw new IllegalArgumentException("ERROR:CAMPO DIA VACIO");
-		}
+			throw new IllegalArgumentException("No se puede copiar una permanencia nula.");
+		}else {
 		setDia(permanencia.getDia());
 		setTramo(permanencia.getTramo());
+		}
 	}
 	
 	public LocalDate getDia() {
@@ -27,7 +28,7 @@ public class Permanencia {
 	
 	private void setDia(LocalDate dia) {
 		if(dia == null) {
-			throw new IllegalArgumentException("ERROR:CAMPO DIA VACIO");
+			throw new IllegalArgumentException("El día de una permanencia no puede ser nulo.");
 		}else {
 			this.dia = dia;
 		}
@@ -39,7 +40,7 @@ public class Permanencia {
 	
 	private void setTramo(Tramo tramo) {
 		if(tramo == null) {
-			throw new IllegalArgumentException("ERROR:CAMPO TRAMO VACIO");
+			throw new IllegalArgumentException("El tramo de una permanencia no puede ser nulo.");
 		}else {
 			this.tramo = tramo;		
 			}
@@ -64,7 +65,7 @@ public class Permanencia {
 
 	@Override
 	public String toString() {
-		return "Permanencia [DIA=" + FORMATO_DIA.format(dia) + ", TRAMO=" + tramo + "]";
+		return "[dia=" + FORMATO_DIA.format(dia) + ", tramo=" + tramo.toString() + "]";
 	}
 	
 	
