@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Reserva {
 
-	private Profesor profesor;
-	private Aula aula;
-	private Permanencia permanencia;
+	Profesor profesor;
+	Aula aula;
+	Permanencia permanencia;
 	public Reserva(Profesor profesor, Aula aula, Permanencia permanencia) {
 		setProfesor(profesor);
 		setAula(aula);
