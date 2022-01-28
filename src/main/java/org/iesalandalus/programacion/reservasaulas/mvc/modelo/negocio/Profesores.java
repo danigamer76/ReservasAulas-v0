@@ -20,11 +20,11 @@ public class Profesores {
 	}
 
 	public Profesor[] get() {
-		return copiaProfundaAulas();
+		return copiaProfundaProfesores();
 
 	}
 
-	private Profesor[] copiaProfundaAulas() {
+	private Profesor[] copiaProfundaProfesores() {
 		Profesor[] copiaProfesor = new Profesor[coleccionProfesores.length];
 		for (int i = 0; i < coleccionProfesores.length; i++) {
 			copiaProfesor[i] = coleccionProfesores[i];
