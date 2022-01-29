@@ -14,7 +14,7 @@ public class Consola {
 
 	private Consola() {};
 
-	public static void mostraMenu() {
+	public static void mostrarMenu() {
 		mostrarCabecera("Gestión de clientes");
 		for (Opcion opcion: Opcion.values()) {
 			System.out.println(opcion);

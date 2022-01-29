@@ -11,6 +11,7 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Tramo;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.Aulas;
 import org.iesalandalus.programacion.reservasaulas.mvc.vista.Consola;
+import org.iesalandalus.programacion.reservasaulas.mvc.vista.Vista;
 
 public class MainApp {
 
@@ -27,8 +28,6 @@ public class MainApp {
 //		System.out.println(aulas.buscar(aula1));
 
 //		Consola.mostraMenu();
-
-		System.out.println("Prueba 1 \n Prueba 2");
 
 	}
 
