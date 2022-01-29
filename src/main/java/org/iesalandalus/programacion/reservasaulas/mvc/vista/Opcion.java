@@ -4,118 +4,102 @@ public enum Opcion {
 	SALIR("Salir") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.salir();
 		}
 	},
 	INSERTAR_AULA("Insertar Aula") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.insertarAula();
 		}
 	},
 	BORRAR_AULA("Borrar Aula") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.borrarAula();
 		}
 	},
 	BUSCAR_AULA("Buscar Aula") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.buscarAula();
 		}
 	},
 	LISTAR_AULAS("Listar Aulas") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.listarAulas();
 		}
 	},
 	INSERTAR_PROFESOR("Insertar Profesor") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.insertarProfesor();
 		}
 	},
 	BORRAR_PROFESOR("Borrar Profesor") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.borrarProfesor();
 		}
 	},
 	BUSCAR_PROFESOR("Buscar Profesor") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.buscarProfesor();
 		}
 	},
 	LISTA_PROFESORES("Lista Profesor") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.listarProfesores();
 		}
 	},
 	INSERTAR_RESERVA("Insertar Reserva") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.realizarReserva();
 		}
 	},
 	BORRAR_RESERVA("Borrar Reserva") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.anularReserva();
 		}
 	},
 	LISTAR_RESERVAS("Listar Reservas") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.listarReservas();
 		}
 	},
 	LISTAR_RESERVAS_AULA("Listar Reservas Aula") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.listarReservasAula();
 		}
 	},
 	LISTAR_RESERVAS_PROFESOR("Listar Reservas Profesor") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.listarReservasProfesor();
 		}
 	},
 	LISTAR_RESERVAS_PERMANENCIA("Listar Reservas Permanencia") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.listarReservasPermanencia();
 		}
 	},
 	CONSULTAR_DISPONIBILIDAD("Consultar Disponibilidad") {
 		@Override
 		public void ejecutar() {
-			// TODO Auto-generated method stub
-
+			vista.consultarDisponibilidad();
 		}
 	};
 
 	private String mensajeAMostrar;
-	private Vista vista;
+	private static Vista vista;
 
 	private Opcion(String mensajeAMostrar) {
 		this.mensajeAMostrar=mensajeAMostrar;

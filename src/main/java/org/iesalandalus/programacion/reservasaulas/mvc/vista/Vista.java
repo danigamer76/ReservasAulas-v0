@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.iesalandalus.programacion.reservasaulas.mvc.controlador.Controlador;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanencia;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
@@ -11,9 +12,9 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 
 public class Vista {
 
-	private static final String ERROR;
-	private static final String NOMBRE_VALIDO;
-	private static final String CORREO_VALIDO;
+	private static final String ERROR = "";
+	private static final String NOMBRE_VALIDO = "";
+	private static final String CORREO_VALIDO = "";
 
 	private Controlador controlador;
 
@@ -37,7 +38,7 @@ public class Vista {
 	}
 
 	public void salir() {
-		controlador.salir();
+		controlador.terminar();
 	}
 
 	//AULAS//
@@ -48,7 +49,7 @@ public class Vista {
 			Aula aula = Consola.leerAula();
 			controlador.insertarAula(aula);
 			System.out.println("Aula insertada correctamente");
-		} catch (OperationNotSupportedException|IllegalAccessException e) {
+		} catch (OperationNotSupportedException e) {
 			System.out.println(ERROR + e.getMessage());
 		}
 	}
@@ -82,8 +83,8 @@ public class Vista {
 
 	public void listarAulas() {
 		Consola.mostrarCabecera("Listar Aulas");
-		List<String> aulas = controlador.representarAulas();
-		if (!aulas.isEmpty()) {
+		String[] aulas = controlador.representarAulas();
+		if (aulas.length != 0) {
 			for (String aula : aulas) {
 				System.out.println(aula);
 			}
@@ -100,7 +101,7 @@ public class Vista {
 			Profesor profesor = Consola.leerProfesor();
 			controlador.insertarProfesor(profesor);
 			System.out.println("Profesor insertado correctamente");
-		} catch (OperationNotSupportedException|IllegalAccessException e) {
+		} catch (OperationNotSupportedException e) {
 			System.out.println(ERROR + e.getMessage());
 		}
 	}
@@ -134,8 +135,8 @@ public class Vista {
 
 	public void listarProfesores() {
 		Consola.mostrarCabecera("Listar Profesores");
-		List<String> profesores = controlador.representarProfesores();
-		if (!profesores.isEmpty()) {
+		String[] profesores = controlador.representarProfesores();
+		if (profesores.length != 0) {
 			for (String profesor : profesores) {
 				System.out.println(profesor);
 			}
@@ -147,34 +148,28 @@ public class Vista {
 	public void realizarReserva() {
 		Consola.mostrarCabecera("Realizar Reserva");
 		try {
-			Aula aula = Consola.leerAula();
 			Profesor profesor = Consola.leerProfesor();
-			Permanencia permanencia = new Permanencia(Consola.leerDia(), Consola.leerTramo());
-			Reserva reserva = new Reserva(profesor, aula, permanencia);
+			Reserva reserva = leerReserva(profesor);
 			controlador.realizarReserva(reserva);
 			System.out.println("Reserva realizada correctamente");
-		} catch (OperationNotSupportedException|IllegalAccessException e) {
+		} catch (OperationNotSupportedException e) {
 			System.out.println(ERROR + e.getMessage());
 		}
 	}
 
 	private Reserva leerReserva(Profesor profesor) {
 		Consola.mostrarCabecera("Leer Reserva");
-		try {
-			controlador.reprenstarReserva(reservaAula);
-		} catch (OperationNotSupportedException|IllegalAccessException e) {
-			System.out.println(ERROR + e.getMessage());
-		}
+			Aula aula = Consola.leerAula();
+			Permanencia permanencia = new Permanencia(Consola.leerDia(), Consola.leerTramo());
+		return new Reserva(profesor, aula, permanencia);
 	}
 
 	public void anularReserva() {
 		Consola.mostrarCabecera("Anular Reserva");
 		try {
-			Aula aula = Consola.leerAula();
 			Profesor profesor = Consola.leerProfesor();
-			Permanencia permanencia = new Permanencia(Consola.leerDia(), Consola.leerTramo());
-			Reserva reserva = new Reserva(profesor, aula, permanencia);
-			controlador.anularReserva(Reserva);
+			Reserva reserva = leerReserva(profesor);
+			controlador.anularReserva(reserva);
 			System.out.println("Reserva anulada correctamente.");
 		} catch (OperationNotSupportedException|IllegalArgumentException e) {
 			System.out.println(ERROR + e.getMessage());
@@ -183,8 +178,8 @@ public class Vista {
 
 	public void listarReservas() {
 		Consola.mostrarCabecera("Listar Reservas");
-		List<String> reservas = controlador.representarReservas();
-		if (!reservas.isEmpty()) {
+		String[] reservas = controlador.representarReservas();
+		if (reservas.length != 0) {
 			for (String reserva : reservas) {
 				System.out.println(reserva);
 			}
@@ -196,9 +191,9 @@ public class Vista {
 	public void listarReservasAula() {
 		Consola.mostrarCabecera("Listar Reservas Aula");
 		Aula aula = Consola.leerAula();
-		List<String> reservasAula = controlador.getReservasAula(aula);
-		if (!reservasAula.isEmpty()) {
-			for (String reservaAula : reservasAula) {
+		Reserva[] reservasAula = controlador.getReservasAula(aula);
+		if (reservasAula.length != 0) {
+			for (Reserva reservaAula : reservasAula) {
 				System.out.println(reservaAula);
 			}
 		} else {
@@ -209,9 +204,9 @@ public class Vista {
 	public void listarReservasProfesor() {
 		Consola.mostrarCabecera("Listar Reservas Profesor");
 		Profesor profesor = Consola.leerProfesor();
-		List<String> reservasProfesor = controlador.getReservasProfesor(profesor);
-		if (!reservasProfesor.isEmpty()) {
-			for (String reservaProfesor : reservasProfesor) {
+		Reserva[] reservasProfesor = controlador.getReservasProfesor(profesor);
+		if (reservasProfesor.length != 0) {
+			for (Reserva reservaProfesor : reservasProfesor) {
 				System.out.println(reservaProfesor);
 			}
 		} else {
@@ -222,9 +217,9 @@ public class Vista {
 	public void listarReservasPermanencia() {
 		Consola.mostrarCabecera("Listar Reservas Permanencia");
 		Permanencia permanencia = new Permanencia(Consola.leerDia(), Consola.leerTramo());
-		List<String> reservasPermanencia = controlador.getReservasPermanencia(permanencia);
-		if (!reservasPermanencia.isEmpty()) {
-			for (String reservaPermanencia : reservasPermanencia) {
+		Reserva[] reservasPermanencia = controlador.getReservasPermanencia(permanencia);
+		if (reservasPermanencia.length != 0) {
+			for (Reserva reservaPermanencia : reservasPermanencia) {
 				System.out.println(reservaPermanencia);
 			}
 		} else {
