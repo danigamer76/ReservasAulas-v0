@@ -27,7 +27,7 @@ public class Controlador {
 
 	public void terminar() {
 		vista.salir();
-		System.out.println("Adios");
+		
 	}
 
 	public void insertarAula(Aula aula) throws OperationNotSupportedException {

@@ -38,7 +38,8 @@ public class Vista {
 	}
 
 	public void salir() {
-		controlador.terminar();
+//		controlador.terminar();
+		System.out.println("Adios");
 	}
 
 	//AULAS//

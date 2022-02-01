@@ -12,12 +12,16 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.Reservas;
 
 public class Modelo {
 
-	private static final int CAPACIDAD = 0;
+	private static final int CAPACIDAD = 10;
 	Profesores profesores;
 	Aulas aulas;
 	Reservas reservas;
 
-	public Modelo() {};
+	public Modelo() {
+		profesores = new Profesores(CAPACIDAD);
+		aulas = new Aulas(CAPACIDAD);
+		reservas = new Reservas(CAPACIDAD);
+	};
 
 	public Aula[] getAulas() {
 		return aulas.get();
